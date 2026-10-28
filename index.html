@@ -189,10 +189,49 @@
 
     <section class="contact page-gutter" id="contact">
       <div class="contact-top"><p class="section-index mono"><span class="index-dot"></span> 04 / GET IN TOUCH</p><span class="contact-spark">✳</span></div>
-      <div class="contact-content"><p class="mono contact-kicker">HAVE AN ECOMMERCE PROJECT IN MIND?</p><h2>Let’s build<br><em>it better.</em></h2><div class="contact-bottom-row"><p>Available for freelance projects, theme development<br>and ecommerce frontend work.</p><a class="contact-link magnetic" href="mailto:quangminh2169@gmail.com">Tell me about your project <span>↗</span></a></div></div>
+      <div class="contact-content"><p class="mono contact-kicker">HAVE AN ECOMMERCE PROJECT IN MIND?</p><h2>Let’s build<br><em>it better.</em></h2><div class="contact-bottom-row"><p>Available for freelance projects, theme development<br>and ecommerce frontend work.</p><button class="contact-link magnetic" type="button" data-open-contact>Tell me about your project <span aria-hidden="true">↗</span></button></div></div>
       <div class="contact-footer mono"><span>SHOPIFY / BIGCOMMERCE / FRONTEND</span><span>BASED IN VIETNAM · WORKING WORLDWIDE</span><span>THOUGHTFUL WORK. CLEAN CODE.</span></div>
     </section>
   </main>
+  <dialog class="contact-dialog" aria-labelledby="contact-dialog-title">
+    <div class="contact-dialog-header">
+      <div><p class="mono contact-kicker">LET’S TALK</p><h2 id="contact-dialog-title">Tell me about<br><em>your project.</em></h2></div>
+      <button class="contact-dialog-close" type="button" aria-label="Close contact form">×</button>
+    </div>
+    <form class="contact-form" action="https://api.web3forms.com/submit" method="POST">
+      <input type="hidden" name="access_key" value="bd0dac0f-8369-44da-98f9-757d41f7cc22">
+      <input type="hidden" name="subject" value="New portfolio project enquiry">
+      <input type="hidden" name="from_name" value="Mint Portfolio">
+      <label class="contact-honeypot" aria-hidden="true">Leave this field empty<input type="checkbox" name="botcheck" tabindex="-1" autocomplete="off"></label>
+      <div class="contact-form-grid">
+        <label class="contact-field">Your name<input type="text" name="name" autocomplete="name" placeholder="Jane Smith" required maxlength="100"></label>
+        <label class="contact-field">Email address<input type="email" name="email" autocomplete="email" placeholder="jane@company.com" required maxlength="254"></label>
+        <label class="contact-field">Platform
+          <select name="platform" required>
+            <option value="" selected disabled>Select a platform</option>
+            <option>Shopify</option>
+            <option>BigCommerce</option>
+            <option>Other / not sure</option>
+          </select>
+        </label>
+        <label class="contact-field">Budget (optional)
+          <select name="budget">
+            <option value="" selected>Choose a range</option>
+            <option>Under $1,000</option>
+            <option>$1,000–$3,000</option>
+            <option>$3,000–$5,000</option>
+            <option>$5,000+</option>
+            <option>Not sure yet</option>
+          </select>
+        </label>
+        <label class="contact-field contact-field-wide">Store URL (optional)<input type="url" name="store_url" placeholder="https://yourstore.com" maxlength="500"></label>
+        <label class="contact-field contact-field-wide">What do you need help with?<textarea name="message" rows="4" placeholder="Tell me about your store, goals, timeline, or the features you need." required maxlength="3000"></textarea></label>
+      </div>
+      <p class="contact-form-privacy">Your details will be sent securely through Web3Forms and used only to respond to your enquiry.</p>
+      <p class="contact-form-status" role="status" aria-live="polite"></p>
+      <button class="contact-form-submit" type="submit">Send project enquiry <span aria-hidden="true">↗</span></button>
+    </form>
+  </dialog>
   <footer class="site-footer page-gutter"><a class="wordmark" href="#home" aria-label="Mint, back to top"><span class="wordmark-name" aria-hidden="true"><span class="wordmark-letter"><span class="wordmark-glyph">m</span></span><span class="wordmark-letter"><span class="wordmark-glyph">i</span></span><span class="wordmark-letter"><span class="wordmark-glyph">n</span></span><span class="wordmark-letter"><span class="wordmark-glyph">t</span></span></span><span class="wordmark-registered" aria-hidden="true">®</span><b class="wordmark-dot" aria-hidden="true"></b></a><p>Shopify &amp; BigCommerce frontend developer.</p><div><a href="#home">Back to top ↑</a><span>© <span id="year"></span> MINT</span></div></footer>
 </body>
 </html>

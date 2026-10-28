@@ -9,6 +9,8 @@ A responsive portfolio concept for a frontend developer specializing in Shopify 
 
 GSAP, ScrollTrigger, Lenis, Swiper and Google Fonts are loaded remotely, so an internet connection is required for those assets.
 
+The contact form uses Web3Forms. The frontend access key is public by design; restrict allowed domains to `devbinhduong.github.io` and configure spam protection in the Web3Forms dashboard.
+
 ## Included interactions
 - GSAP hero intro timeline and ScrollTrigger reveals
 - Animated marquee and orbital hero artwork
@@ -21,7 +23,7 @@ GSAP, ScrollTrigger, Lenis, Swiper and Google Fonts are loaded remotely, so an i
 - Reduced-motion preference support
 
 ## Before publishing
-- The contact link in `index.html` uses your professional email.
+- Restrict the Web3Forms access key to `devbinhduong.github.io` in the Web3Forms dashboard.
 - Confirm the project descriptions and your exact contribution.
 - All ten project cards use locally saved homepage screenshots in `assets/projects/`; refresh these images when the storefronts change.
 - Add any LinkedIn, GitHub, and freelance profile links you want to show.

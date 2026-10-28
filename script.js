@@ -4,6 +4,9 @@
   const progress = document.querySelector('.scroll-progress span');
   const year = document.getElementById('year');
   const cursor = document.querySelector('.cursor');
+  const contactDialog = document.querySelector('.contact-dialog');
+  const contactForm = document.querySelector('.contact-form');
+  const contactStatus = document.querySelector('.contact-form-status');
   if (year) year.textContent = new Date().getFullYear();
 
   const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -20,6 +23,65 @@
       nav.classList.remove('open');
       toggle.setAttribute('aria-expanded', 'false');
     }));
+  }
+
+  if (contactDialog && contactForm && contactStatus) {
+    const closeButton = contactDialog.querySelector('.contact-dialog-close');
+    const submitButton = contactForm.querySelector('.contact-form-submit');
+
+    document.querySelectorAll('[data-open-contact]').forEach(button => {
+      button.addEventListener('click', () => {
+        contactDialog.showModal();
+        smoothScroll?.stop();
+      });
+    });
+
+    closeButton?.addEventListener('click', () => contactDialog.close());
+    contactDialog.addEventListener('click', event => {
+      if (event.target === contactDialog) contactDialog.close();
+    });
+    contactDialog.addEventListener('close', () => smoothScroll?.start());
+
+    contactForm.addEventListener('submit', async event => {
+      event.preventDefault();
+      contactStatus.classList.remove('is-success');
+
+      const accessKey = contactForm.elements.access_key.value;
+      if (!accessKey || accessKey === 'YOUR_WEB3FORMS_ACCESS_KEY') {
+        contactStatus.textContent = 'The form is not connected yet. Please add your Web3Forms access key to enable submissions.';
+        return;
+      }
+
+      if (!contactForm.reportValidity()) return;
+
+      submitButton.disabled = true;
+      submitButton.textContent = 'Sending…';
+      contactStatus.textContent = '';
+
+      try {
+        const response = await fetch(contactForm.action, {
+          method: 'POST',
+          body: new FormData(contactForm),
+          headers: { Accept: 'application/json' },
+          credentials: 'omit'
+        });
+        const result = await response.json();
+
+        if (!response.ok || !result.success) {
+          contactStatus.textContent = result.message || 'Your message could not be sent. Please try again.';
+          return;
+        }
+
+        contactForm.reset();
+        contactStatus.textContent = 'Thanks — your message has been sent. I’ll be in touch soon.';
+        contactStatus.classList.add('is-success');
+      } catch {
+        contactStatus.textContent = 'Unable to reach the form service. Check your connection and try again.';
+      } finally {
+        submitButton.disabled = false;
+        submitButton.innerHTML = 'Send project enquiry <span aria-hidden="true">↗</span>';
+      }
+    });
   }
 
   let progressFrame = 0;
